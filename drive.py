@@ -21,7 +21,7 @@ app = Flask(__name__)
 model = None
 prev_image_array = None
 
-
+f_num = 0 
 class SimplePIController:
     def __init__(self, Kp, Ki):
         self.Kp = Kp
@@ -44,8 +44,9 @@ class SimplePIController:
 
 
 controller = SimplePIController(0.1, 0.002)
-set_speed = 10
-controller.set_desired(set_speed)
+starting_speed = 5
+max_speed = 15
+controller.set_desired(starting_speed)
 
 def crop_color_size_change(img):
     cropped_img = img[60:140, :, :]
@@ -56,7 +57,9 @@ def crop_color_size_change(img):
 
 @sio.on('telemetry')
 def telemetry(sid, data):
+    global f_num
     if data:
+        f_num = f_num + 1
         # The current steering angle of the car
         steering_angle = data["steering_angle"]
         # The current throttle of the car
@@ -70,9 +73,11 @@ def telemetry(sid, data):
         processed_image = crop_color_size_change(image_array)
         steering_angle = float(model.predict(processed_image[None, :, :, :], batch_size=1))
 
+        desired_speed = min(starting_speed + f_num * 0.01, max_speed)
+        controller.set_desired(desired_speed)
         throttle = controller.update(float(speed))
 
-        print(steering_angle, throttle)
+        print(desired_speed, steering_angle, throttle)
         send_control(steering_angle, throttle)
 
         # save frame
@@ -82,6 +87,7 @@ def telemetry(sid, data):
             image.save('{}.jpg'.format(image_filename))
     else:
         # NOTE: DON'T EDIT THIS.
+        f_num = 0
         sio.emit('manual', data={}, skip_sid=True)
 
 
@@ -112,7 +118,7 @@ if __name__ == '__main__':
         'image_folder',
         type=str,
         nargs='?',
-        default='',
+        default='', 
         help='Path to image folder. This is where the images from the run will be saved.'
     )
     args = parser.parse_args()
