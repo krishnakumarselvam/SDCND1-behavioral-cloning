@@ -1,4 +1,4 @@
-#**Behavioral Cloning** 
+# **Behavioral Cloning** 
 
 ---
 
@@ -43,19 +43,17 @@ The part1_complile_data.ipynb notebook has details on how I compile data from mu
 
 My model consists of a convolution neural network with a combination of 5x5 and 3x3 layers followed by fully connected layers. (model.py lines 101-113). For further details on the architecture, please scroll down. The model includes `elu` layers to introduce nonlinearity , and the data is normalized in the model using a Keras lambda layer . 
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 The model contains a dropout layer in order to reduce overfitting.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually.
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used multiple runs of center lane driving, recovering from edges etc. The results were validated by testing on the simulator.
-
-For details about how I created the training data, see the next section. 
+Training data was chosen to keep the vehicle driving on the road. I used multiple runs of center lane driving, recovering from edges etc. The results were validated by testing on the simulator. For details about how I created the training data, see the next section. 
 
 ### Model Architecture and Training Strategy
 
@@ -63,7 +61,7 @@ For details about how I created the training data, see the next section.
 
 The overall strategy for deriving a model architecture was to use a convoloutional neural network given their ability to extract features from images. I split my dataset into a training and validation set to check for overfitting (the validation loss wasn't much higher than the training loss). I also stopped at 3 epochs to stop overfitting.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes 
 
@@ -79,7 +77,7 @@ The final model architecture (model.py lines 18-24) consisted of a convolution n
 * Fully connected layer with 10 neurons and `elu` activation
 * Output layer with one neuron
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 I started off with a lot of center lane driving ..
 
@@ -89,10 +87,14 @@ Followed by some recovery data ..
 
 <img src="img/edge.jpg" width="240" />
 
-I also used data from the left and right camera images. For the left camera, I added a 0.25 to the steering angle and for the right camera, I subtracted 0.25. I also randomly flipped the images (left --> right and vice versa) to create roughly the same number of data points for left and right turns.
+I also used data from the left and right camera images. For the left camera, I added a 0.25 to the steering angle and for the right camera, I subtracted 0.25.
 
 <img src="img/original_dist.png" width="240" />
 
 I also realized that the steering angle was 0 for a large number of cases, so I sampled down on the 0 angle data points so that the training isn't overly influenced by straight driving.
 
 <img src="img/final_dist.png" width="240" />
+
+ I also randomly flipped the images (left --> right and vice versa) to create roughly the same number of data points for left and right turns.
+
+
