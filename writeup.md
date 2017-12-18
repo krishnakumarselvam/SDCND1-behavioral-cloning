@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 
 My project includes the following files:
 
-* part1_compile_data.ipynb (notebook used to compile data from multiple training runs)
+* Part1_complile_data.ipynb (notebook used to compile data from multiple training runs)
 * model.py (notebook used to create and train the model)
 * drive.py (script to drive the car)
 * model.h5 (a trained Keras model)

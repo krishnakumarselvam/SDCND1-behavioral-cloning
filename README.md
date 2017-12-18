@@ -4,7 +4,7 @@
 
 This repository has the following five files:
 To meet specifications, the project will require submitting five files: 
-* [part1_compile_data.ipynb](part1_compile_data.ipynb) (notebook used to compile data from multiple training runs)
+* [Part1_complile_data.ipynb.ipynb](Part1_complile_data.ipynb) (notebook used to compile data from multiple training runs)
 * [model.py](model.py) (notebook used to create and train the model)
 * [drive.py](drive.py) (script to drive the car)
 * [model.h5](model.h5) (a trained Keras model)
