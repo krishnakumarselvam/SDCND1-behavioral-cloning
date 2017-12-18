@@ -4,13 +4,12 @@
 
 This repository has the following five files:
 To meet specifications, the project will require submitting five files: 
-* part1_compile_data.ipynb (notebook used to compile data from multiple training runs)
-* model.py (notebook used to create and train the model)
-* drive.py (script to drive the car)
-* model.h5 (a trained Keras model)
-* writeup.md (a writeup of my methodology)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
-
+* [part1_compile_data.ipynb](part1_compile_data.ipynb) (notebook used to compile data from multiple training runs)
+* [model.py](model.py) (notebook used to create and train the model)
+* [drive.py](drive.py) (script to drive the car)
+* [model.h5](model.h5) (a trained Keras model)
+* [writeup](writeup.md)
+* [Video](https://youtu.be/aDX63ukqYHI)
 
 ---
 The goals / steps of this project are the following:

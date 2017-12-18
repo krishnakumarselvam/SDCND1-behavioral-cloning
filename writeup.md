@@ -26,6 +26,8 @@ My project includes the following files:
 * drive.py (script to drive the car)
 * model.h5 (a trained Keras model)
 * writeup.md (a writeup of my methodology)
+* [Video](https://youtu.be/aDX63ukqYHI)
+
 
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
@@ -97,4 +99,4 @@ I also realized that the steering angle was 0 for a large number of cases, so I 
 
  I also randomly flipped the images (left --> right and vice versa) to create roughly the same number of data points for left and right turns.
 
-
+For the final simulation, I also updated drive.py to make sure that the car accelerated a little slower since the PID controller went up to the desired speed limit a little too quickly. I was able to finish the entire track at roughly 15 mph.
